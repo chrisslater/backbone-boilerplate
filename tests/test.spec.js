@@ -1,11 +1,9 @@
 define(['chai', 'sinon'],function(chai, sinon){
-  console.log(sinon);
-
   var expect = chai.expect;
 
-  window.hello = function(){
-    return "Hello World";
-  };
+    window.hello = function(){
+        return "Hello World";
+    };
 
   describe('Trying out the test libraries', function(){
     describe('Chai', function(){
