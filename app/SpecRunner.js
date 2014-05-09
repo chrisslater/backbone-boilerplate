@@ -9,15 +9,28 @@ require.config({
     // Testing
     mocha: 'libs/mocha',
     chai: 'libs/chai',
-    sinion: 'libs/sinion-1.9.1'
-  }
+    sinon: 'libs/sinon-1.9.1'
+  },
+  shim: {
+    mocha: {
+      exports: 'mocha'
+    },
+    sinon: {
+      exports: 'sinon'
+    }
+  },
+  urlArgs: "bust=" +  (new Date()).getTime()
 });
 
-require(['mocha', 'chai'], function(mocha, chai){
-  console.log(mocha, chai);
+require(['mocha', 'chai', 'sinon'], function(mocha, chai, sinon){
+  var specs = [];
 
-  this.assert = chai.assert;
-  this.expect = chai.expect;
+  mocha.setup('bdd');
 
+  specs.push('tests/test.spec.js');
+
+  require(specs, function(){
+    mocha.run();
+  });
 
 });
