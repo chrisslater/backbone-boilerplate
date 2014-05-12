@@ -1,11 +1,11 @@
-define(['backbone', 'jquery'],function(Backbone, $){
-  var App = {};
+define(['backbone', 'marrionette', 'jquery', 'require'],function(Backbone){
+  var App = new Backbone.Marrionette.Application();
 
-  // Add global event handler to App.
-  _.extend(App, Backbone.Events);
+  App.addRegions({
+    app: '#app'
+  });
 
-  App.start = function(){
-    console.log('App is ready to start');
-  };
+  // Add any setup here.
+
   return App;
 });
