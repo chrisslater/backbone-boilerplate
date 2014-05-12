@@ -1,11 +1,26 @@
-define(['app', 'backbone', 'marionette'], function(App, Backbone, Marionette){
-  console.log(Backbone.Marionette);
-  Backbone.Marionette.AppRouter.extend({
-    routes : {
-      "" : "userController"
-    },
-    userController: function(){
-      return new require('app/modules/user/controllers/user');
+define(['app', 'backbone', 'marionette', 'routeFilter'], function(App){
+  return App.module('User', {
+    startWithParent: false,
+    define: function(User, App, Backbone, Marionette){
+      'use strict';
+
+      var Router = Backbone.Router.extend({
+        routes: {
+          "user/dashboard": "userDashboard"
+        },
+        before: function(){
+          App.startSubApp('User');
+        },
+        userDashboard: function(){
+          require(['modules/user/controllers/userController'], function(UserController){
+            new UserController();
+          });
+        }
+      });
+
+      App.addInitializer(function(){
+        var router = new Router();
+      });
     }
   });
 });
