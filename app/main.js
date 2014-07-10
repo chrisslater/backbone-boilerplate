@@ -6,9 +6,15 @@ require.config({
     routeFilter: 'libs/backbone/backbone.routefilter',
     jquery: 'libs/jquery/jquery-1.11.1',
     underscore: 'libs/lodash',
+    handlebars: 'libs/handlebars/handlebars',
+    //handlebars: 'libs/handlebars/handlebars-runtime',
     text: 'libs/require/plugins/text',
-    handlebars: 'libs/handlebars-v1.3.0',
-    hbs: 'libs/hbs.js'
+    
+    hbs: 'libs/hbs'
+
+    // i18nprecompile: "libs/hbs/i18nprecompile",
+    // json2: "libs/hbs/json2"
+    //hbs: 'libs/require-handlebars-plugin/hbs',
   },
   shim: {
     handlebars: {
@@ -26,10 +32,12 @@ require.config({
       deps: ['backbone']
     }
   },
-  hbs: {
-    templateExtension: 'html',
-    helperDirectory: "templates/helpers/"
-  }
+
+  // hbs: {
+  //  // templateExtension: 'html',
+  //  // helperDirectory: "templates/helpers/",
+  // }
+
 });
 
 require(['app']);
