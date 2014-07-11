@@ -1,4 +1,4 @@
-define(['backbone', 'marionette', 'jquery', 'require'],function(Backbone){
+define(['backbone', 'marionette', 'jquery'],function(Backbone){
   var App = new Backbone.Marionette.Application();
 
   App.startSubApp = function(appName, args){
@@ -14,7 +14,7 @@ define(['backbone', 'marionette', 'jquery', 'require'],function(Backbone){
 
   // Add modules.
   var modules = [
-    'modules/user/main'
+    'user/main'
   ];
 
   require(modules, function(){

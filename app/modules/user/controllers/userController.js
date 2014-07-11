@@ -1,9 +1,5 @@
-define(['app', 'hbs!templates/dashboard'], function(App, template){
-
-  console.log(window.template = template());
-
-
-  return function(){
-    console.log('User Controller');
+define(['app', 'user/views/dashboardView'], function(App, DashboardView){
+  return function(params){
+    new DashboardView();
   };
 });

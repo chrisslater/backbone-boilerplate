@@ -1,25 +1,12 @@
-define(['app', 'backbone', 'marionette', 'routeFilter'], function(App){
+define(['app', 'user/routers/userRouter'], function(App, UserRouter){
   return App.module('User', {
     startWithParent: false,
-    define: function(User, App, Backbone, Marionette){
+    define: function(User, App, Backbone){
       'use strict';
 
-      var Router = Backbone.Router.extend({
-        routes: {
-          "user/dashboard": "userDashboard"
-        },
-        before: function(){
-          App.startSubApp('User');
-        },
-        userDashboard: function(){
-          require(['modules/user/controllers/userController'], function(UserController){
-            new UserController();
-          });
-        }
-      });
-
+      // Makes the application aware of the user routing structure.
       App.addInitializer(function(){
-        var router = new Router();
+        new UserRouter();
       });
     }
   });
