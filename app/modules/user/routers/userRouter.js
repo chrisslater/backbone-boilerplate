@@ -8,7 +8,7 @@ define(['app'], function(App){
     },
     dashboard: function(){
       // Using require here so that controller is only called if page is hit.
-      require(['user/controllers/userController'], function(UserController){
+      require(['user/controllers/UserController'], function(UserController){
         new UserController();
       });
     }

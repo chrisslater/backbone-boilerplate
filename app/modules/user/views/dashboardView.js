@@ -1,11 +1,8 @@
 define(['hbs!user/templates/dashboard'], function(template){
-
-  var UserDashboardLayout = Backbone.Marionette.LayoutView.extend({
-    el: '#app',
-    template: template
+  return  Backbone.Marionette.LayoutView.extend({
+    template: template,
+    regions: {
+        users: '.users'
+    }
   });
-
-  return function(){
-    new UserDashboardLayout().render();
-  };
 });

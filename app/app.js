@@ -12,6 +12,11 @@ define(['backbone', 'marionette', 'routeFilter', 'jquery'],function(Backbone){
     currentApp.start(args);
   };
 
+  App.addRegions({
+    main: '#main',
+    aside: '#aside'
+  });
+
   // Add modules.
   var modules = [
     'home/main',
