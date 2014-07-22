@@ -1,6 +1,7 @@
 define(function(){
   return [{
     name: 'Chris',
+    
     colour: 'blue'
   },{
     name: 'John',
