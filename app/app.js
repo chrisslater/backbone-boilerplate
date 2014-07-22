@@ -1,11 +1,32 @@
-define(['backbone', 'jquery'],function(Backbone, $){
-  var App = {};
+define(['backbone', 'marionette', 'routeFilter', 'jquery'],function(Backbone){
+  var App = new Backbone.Marionette.Application();
 
-  // Add global event handler to App.
-  _.extend(App, Backbone.Events);
+  App.startSubApp = function(appName, args){
+    var currentApp = App.module(appName);
 
-  App.start = function(){
-    console.log('App is ready to start');
+    if (App.currentApp === currentApp) return;
+    if (App.currentApp) {
+      App.currentApp.stop();
+    }
+    App.currentApp = currentApp;
+    currentApp.start(args);
   };
+
+  App.addRegions({
+    main: '#main',
+    aside: '#aside'
+  });
+
+  // Add modules.
+  var modules = [
+    'home/main',
+    'user/main'
+  ];
+
+  require(modules, function(){
+    App.start();
+    Backbone.history.start();
+  });
+
   return App;
 });

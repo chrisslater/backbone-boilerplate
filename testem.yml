@@ -1,0 +1,6 @@
+framework: mocha
+test_page: runner.html
+src_files:
+    - tests/**/*.spec.js
+launch_in_dev:
+    - Chrome
